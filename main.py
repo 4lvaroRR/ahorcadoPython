@@ -1,13 +1,15 @@
+import os
+
 Usuario1 = 'Usuario 1'
 Usuario2 = 'Usuario 2'
 palabraSecreta = ''
 numIntentos = 0
 bannerInicio =  '''
       _=====_                               _=====_
-     / _____ \                             / _____ \
+     / _____ \                             / _____ \\
    +.-'_____'-.---------------------------.-'_____'-.+
-  /   |     |  '.        S O N Y        .'  |  _  |   \
- / ___| /|\ |___ \                     / ___| /_\ |___ \
+  /   |     |  '.        S O N Y        .'  |  _  |   \\
+ / ___| /|\ |___ \                     / ___| /_\ |___ \\
 / |      |      | ;  __           _   ; | _         _ | ;
 | | <---   ---> | | |__|         |_:> | ||_|       (_)| |
 | |___   |   ___| ;SELECT       START ; |___       ___| ;
@@ -37,10 +39,27 @@ def mostrarMenuIncial():
     print('3. Comenzar el juego')
     print()
 
+def esLetra(letra):
+    #Devuelve True si el dato de entrada es un string, de longitud 1 y una letra. En caso contrario devuelve False
+    if isinstance(letra, str) and len(letra)==1 and letra.isalpha:
+        return True
+    else:
+        return False
+    
+
+def comprobarIntento(letra):
+   #Comprueba cuantas veces aparece
+   num_apariciones = palabraSecreta.count(letra)
+   print ("La letra " + letra + " aparece " + str(num_apariciones) + " veces")
+
+
 def comenzarJuego():
     print('Turno de ' + Usuario2)
+    letra=input('Introduce una letra')
+    if esLetra(letra) ==  True:
+        comprobarIntento(letra)
 
-    
+os.system("cls")
 
 mostrarBannerInicio()
 
